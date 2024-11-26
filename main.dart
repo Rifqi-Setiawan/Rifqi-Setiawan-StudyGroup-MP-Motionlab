@@ -1,42 +1,94 @@
 import 'dart:io';
-
+import 'class.dart';
 void main() {
-  double saldo = 0;
-  double? number;
-  showMenu();
-  String? option = stdin.readLineSync();
-  while (option != "4" ) {
-    switch (option) {
+  var authUser = AuthUser();
+  User? loggedUser;
+  String? username, password;
+  showFirstMenu();
+  String? authOption = stdin.readLineSync();
+  while (authOption!= "3") {
+    switch (authOption) {
       case "1":
-        print("Saldo anda berjumlah: ${saldo}");
-        break;
-      case "2":
-        print("Masukkan jumlah deposit yang ingin anda masukkan: ");
-        number = double.parse(stdin.readLineSync()!);
-        saldo = saldo + number;
-        break;
-      case "3":
-        print("Masukkan nominal yang ingin kamu tarik");
-        number = double.parse(stdin.readLineSync()!);
-        if (number > saldo) {
-          print("Maaf saldo kamu hanya tersisa ${saldo}");
+        print("Masukkan username!");
+        username = stdin.readLineSync();
+        print("Masukkan password!");
+        password = stdin.readLineSync();
+        print("Masukkan saldo awal!");
+        double? balance = double.parse(stdin.readLineSync()!);
+        if(username != null && password != null) {
+          authUser.register(username, password, balance);
         } else {
-          saldo = saldo - number;
-          print("Kamu berhasil menarik saldo, sisa saldo kamu: ${saldo}");
+          print("Masukkan username dan password anda dengan benar!");
+        }
+        break;
+
+      case "2":
+        print("Masukkan username anda!");
+        username = stdin.readLineSync();
+        print("Masukkan username anda!");
+        password = stdin.readLineSync();
+        if (username != null && password != null) {
+          loggedUser = authUser.login(username, password);
+          if (loggedUser != null) {
+            print("Login berhasil, selamat datang ${loggedUser.username}");
+            bankSystem(loggedUser);
+          } else {
+            print("Anda salah memasukkan username atau password");
+          }
+        } else {
+          print("Masukkan username dan password anda dengan benar!");
         }
         break;
     }
-    showMenu();
-    option = stdin.readLineSync();
+    showFirstMenu();
+    authOption = stdin.readLineSync();
   }
-  print("Kamu berhasil keluar");
+  print("Terimakasih telah menggunakan aplikasi kami.");
 }
 
-void showMenu()  {
-  print("MENU");
+void bankSystem(User loggedUser) {
+  showBankSystemMenu();
+  String? option = stdin.readLineSync();
+  while(option != "4") {
+    switch(option){
+      case "1":
+      print("Sisa saldo anda: ${loggedUser.balance}");
+      break;
+
+      case "2":
+      print("Masukkan nominal yang ingin anda depositkan!");
+      double? deposit = double.parse(stdin.readLineSync()!);
+      loggedUser.deposit(deposit);
+      break;
+
+      case "3":
+      print("Masukkan nominal yang ingin anda tarik");
+      double? withDraw = double.parse(stdin.readLineSync()!);
+      loggedUser.withDraw(withDraw);
+      break;
+
+      case "4":
+      print("Anda berhasil logout!");
+      break;
+    }
+    showBankSystemMenu();
+    option = stdin.readLineSync();
+  }
+
+}
+
+
+void showBankSystemMenu()  {
+  print("==== MENU ====");
   print("1. Check Saldo");
   print("2. Deposit Saldo");
   print("3. Tarik Saldo");
   print("4. Exit");
-  print("input nomor menu yang ingin kamu inginkan: ");
+}
+
+void showFirstMenu()  {
+  print("==== MENU ====");
+  print("1. Registrasi Akun");
+  print("2. Login");
+  print("3. Exit");
 }
