@@ -1,16 +1,21 @@
-# motion_week_2
+## WEEK-2-SLICING UI
+Pada week kali ini, kita belajar bagaimana caranya membuat UI dari design yang sudah diberikan menggunakan flutter.
 
-A new Flutter project.
+# Wdiget
+Widget adalah komponen yang saling terhubung untuk membentuk antarmuka di flutter.
 
-## Getting Started
+# Pohon Widget
+1. MyApp [ROOT]
+2. MaterialApp
+3. Scaffold
+4. Container
+5. Row/Column
 
-This project is a starting point for a Flutter application.
+# Widget yang perlu diketahui
+1. SafeArea
+2. Text
+3. Container
+4. Icon
+5. Image
+6. Button
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

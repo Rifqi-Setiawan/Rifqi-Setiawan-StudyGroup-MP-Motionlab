@@ -9,22 +9,22 @@ class Product {
 final List<Product> products = [
   Product(
     imageUrl: 'assets/images/jam.png', 
-    title: 'Product 1',
-    price: 29.99,
+    title: 'Mi Band 8 Pro',
+    price: 54.00,
   ),
   Product(
     imageUrl: 'assets/images/baju.png', 
-    title: 'Product 2',
-    price: 19.99,
+    title: 'Lycra Men’s shirt',
+    price: 12.00,
   ),
   Product(
     imageUrl: 'assets/images/headset.png', 
-    title: 'Product 3',
-    price: 39.99,
+    title: 'Siberia 800',
+    price: 45.00,
   ),
   Product(
     imageUrl: 'assets/images/sepatu.png', 
-    title: 'Product 4',
-    price: 49.99,
+    title: 'Strawberry Frappuccino',
+    price: 35.00,
   ),
 ];
