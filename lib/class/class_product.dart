@@ -24,7 +24,7 @@ final List<Product> products = [
   ),
   Product(
     imageUrl: 'assets/images/sepatu.png', 
-    title: 'Strawberry Frappuccino',
+    title: 'Strawberry ',
     price: 35.00,
   ),
 ];

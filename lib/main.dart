@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:motion_week_2/detail_product_page.dart';
-import 'package:motion_week_2/home_page.dart';
+import 'package:motion_week_2/pages/detail_product_page.dart';
+import 'package:motion_week_2/pages/home_page.dart';
+import 'package:motion_week_2/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/home': (context) => HomePage(),
+        '/detailProduct' : (context) => DetailProductPage(),
+
+      },
     );
   }
 }
