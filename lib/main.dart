@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:motion_week_2/pages/detail_product_page.dart';
 import 'package:motion_week_2/pages/home_page.dart';
 import 'package:motion_week_2/pages/login_page.dart';
+import 'package:motion_week_2/pages/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +17,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/login',
       routes: {
-        '/login': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
-        '/detailProduct' : (context) => DetailProductPage(),
+        '/login': (context) => const LoginPage(),
+        '/home': (context) => const HomePage(),
+        '/detailProduct' : (context) => const DetailProductPage(),
+        '/register' : (context) => const RegisterPage(),
 
       },
     );

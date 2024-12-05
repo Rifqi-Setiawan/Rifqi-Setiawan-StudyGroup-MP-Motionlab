@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:motion_week_2/widgets/custom_button_auth.dart';
 import 'package:motion_week_2/widgets/custom_text_field_widget.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,26 +12,42 @@ class LoginPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 118,
+            height: 203,
           ),
-          Image.asset("assets/images/loginIlustration.png"),
           const Text(
-            "Welcome!",
+            "Register",
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
           const Text(
-            "Happy Shopping All",
+            "Create your account for Happy Shopping",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.normal,
             ),
           ),
+
           const SizedBox(
-            height: 18,
+            height: 54,
           ),
+
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 23),
+            child: CustomTextFieldWidget(
+              hintText: "Full Name",
+              icon: Icon(Icons.person),
+            ),
+          ),
+
+          const SizedBox(
+            height: 20,
+          ),
+          
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
@@ -39,20 +55,35 @@ class LoginPage extends StatelessWidget {
               icon: Icon(Icons.email),
             ),
           ),
+
           const SizedBox(
             height: 20,
           ),
+          
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
               hintText: "Password",
-              icon: Icon(Icons.password),
+              icon: Icon(Icons.lock),
             ),
           ),
+
+          const SizedBox(
+            height: 20,
+          ),
+          
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 23),
+            child: CustomTextFieldWidget(
+              hintText: "Confirm Password",
+              icon: Icon(Icons.lock),
+            ),
+          ),
+
           const SizedBox(
             height: 42,
           ),
-          CustomButtonAuth(onPressed: () {}, buttonText: "Login"),
+          CustomButtonAuth(onPressed: () {}, buttonText: "Register"),
           SizedBox(
             height: 20,
           ),
@@ -61,7 +92,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Don’t have an account? ",
+                "Already have an account? ",
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.black,
@@ -73,9 +104,9 @@ class LoginPage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, "/register");
+                  Navigator.pop(context);
                 },
-                child: Text("Register",
+                child: Text("Login",
                 style: TextStyle(
                   color: Color(0xFF00623B),
                   fontSize: 14,

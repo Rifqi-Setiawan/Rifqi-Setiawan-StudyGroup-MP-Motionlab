@@ -5,10 +5,10 @@ class CustomButtonAuth extends StatelessWidget {
   final String buttonText;
 
   const CustomButtonAuth({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.buttonText,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +16,16 @@ class CustomButtonAuth extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-        minimumSize: Size(381, 55),
+        textStyle: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+        minimumSize: const Size(381, 55),
         shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-        backgroundColor: Color(0xFF00623B),
-
+          borderRadius: BorderRadius.circular(15),
+        ),
+        backgroundColor: const Color(0xFF00623B), 
+        foregroundColor: Colors.white, 
       ),
       child: Text(buttonText),
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:motion_week_2/pages/detail_product_page.dart';
 import '../class/class_product.dart';
 
 class HomePage extends StatefulWidget {
