@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:motion_week_2/widgets/custom_button_auth.dart';
 import 'package:motion_week_2/widgets/custom_text_field_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -12,9 +13,9 @@ class LoginPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 118,
+            height: 90,
           ),
-          Image.asset("assets/images/loginIlustration.png"),
+           Lottie.asset('assets/lottie/lottie_login.json'),
           const Text(
             "Welcome!",
             style: TextStyle(

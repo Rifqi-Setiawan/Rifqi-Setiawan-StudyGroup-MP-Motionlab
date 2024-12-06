@@ -12,7 +12,7 @@ class RegisterPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 203,
+            height: 140,
           ),
           const Text(
             "Register",
@@ -22,7 +22,7 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 5,
           ),
           const Text(
             "Create your account for Happy Shopping",
