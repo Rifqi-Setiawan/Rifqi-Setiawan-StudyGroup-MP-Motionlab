@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:motion_week_2/pages/detail_product_page.dart';
 import 'package:motion_week_2/pages/home_page.dart';
 import 'package:motion_week_2/pages/login_page.dart';
 import 'package:motion_week_2/pages/register_page.dart';
@@ -38,7 +37,6 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
-        '/detailProduct': (context) => const DetailProductPage(),
         '/register': (context) => const RegisterPage(),
       },
     );

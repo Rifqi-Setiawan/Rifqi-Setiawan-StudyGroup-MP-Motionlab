@@ -53,7 +53,10 @@ class LoginPage extends StatelessWidget {
           const SizedBox(
             height: 42,
           ),
-          CustomButtonAuth(onPressed: () {}, buttonText: "Login"),
+          CustomButtonAuth(onPressed: () {
+            Navigator.pushNamed(context, "/home");
+          }, 
+          buttonText: "Login"),
           SizedBox(
             height: 20,
           ),

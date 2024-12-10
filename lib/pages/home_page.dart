@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:motion_week_2/pages/detail_product_page.dart';
 import '../class/class_product.dart';
 
 class HomePage extends StatefulWidget {
@@ -143,7 +144,8 @@ class _HomePageState extends State<HomePage> {
                       GridView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 15,
                           mainAxisSpacing: 18,
@@ -154,7 +156,11 @@ class _HomePageState extends State<HomePage> {
                           final product = products[index];
                           return GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, '/detailProduct');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DetailProductPage(product: product)));
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -164,8 +170,7 @@ class _HomePageState extends State<HomePage> {
                                     color: Colors.black.withOpacity(0.1),
                                     spreadRadius: 2,
                                     blurRadius: 2,
-                                    offset: const Offset(
-                                        0, 2), 
+                                    offset: const Offset(0, 2),
                                   ),
                                 ],
                                 color: Colors.white,
@@ -202,8 +207,8 @@ class _HomePageState extends State<HomePage> {
                                     height: 5,
                                   ),
                                   Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -216,7 +221,19 @@ class _HomePageState extends State<HomePage> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        const Icon(Icons.favorite)
+                                        GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              product.favorite = !product.favorite;
+                                            });
+                                          },
+                                          child: Icon(
+                                            Icons.favorite,
+                                            color: product.favorite
+                                                ? Colors.red
+                                                : Colors.black,
+                                          ),
+                                        )
                                       ],
                                     ),
                                   )
@@ -247,17 +264,17 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Icon(
-                    Icons.home, // Hati tidak terisi
+                    Icons.home,
                     color: Colors.white,
                     size: 40,
                   ),
                   Icon(
-                    Icons.payment, // Hati tidak terisi
+                    Icons.payment,
                     color: Colors.white,
                     size: 40,
                   ),
                   Icon(
-                    Icons.favorite_border, // Hati tidak terisi
+                    Icons.favorite_border,
                     color: Colors.white,
                     size: 40,
                   ),
