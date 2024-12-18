@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:motion_week_2/pages/cart_page.dart';
 import 'package:motion_week_2/pages/home_page.dart';
+import 'package:motion_week_2/pages/invoice_page.dart';
 import 'package:motion_week_2/pages/login_page.dart';
 import 'package:motion_week_2/pages/register_page.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:get/get.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -31,13 +34,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/home',
       routes: {
         '/login': (context) => const LoginPage(),
-        '/home': (context) => const HomePage(),
+        '/home': (context) => HomePage(),
         '/register': (context) => const RegisterPage(),
+        '/cart': (context) => CartPage(),
+        '/invoice': (context) => InvoicePage(),
       },
     );
   }

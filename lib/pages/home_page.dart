@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:motion_week_2/controllers/filter_controller.dart';
+import 'package:motion_week_2/controllers/product_controller.dart';
 import 'package:motion_week_2/pages/detail_product_page.dart';
-import '../class/class_product.dart';
+import 'package:get/get.dart';
+import 'package:motion_week_2/widgets/navbar_bottom.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+  var filter = Get.put(FilterController());
 
-class _HomePageState extends State<HomePage> {
-  String currentCategories = "All";
-  final List<String> categories = ["All", "Watch", "Shirt", "Shoes", "Food"];
+  var product = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -86,40 +85,41 @@ class _HomePageState extends State<HomePage> {
                   // KATEGORI START
                   SizedBox(
                     height: 45,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              currentCategories = categories[index];
-                            });
+                    child:ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: filter.filter.filterList.length,
+                          itemBuilder: (context, index) {
+                            var currentFilter = filter.filter.filterList[index];
+                            return GestureDetector(
+                              onTap: () {
+                                filter.changeFilter(currentFilter);
+                              },
+                              child: Obx(() => Container(
+                                    margin: const EdgeInsets.only(right: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: currentFilter ==
+                                              filter.filter.currentFilter.value
+                                          ? const Color(0xFF3A5A40)
+                                          : const Color(0xFF868A91)
+                                              .withOpacity(0.2),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        currentFilter,
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  )),
+                            );
                           },
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 10),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: categories[index] == currentCategories
-                                  ? const Color(0xFF3A5A40)
-                                  : const Color(0xFF868A91).withOpacity(0.2),
-                            ),
-                            child: Center(
-                              child: Text(
-                                categories[index],
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                        ),
                   ),
                   // KATEGORI END
                 ],
@@ -151,16 +151,16 @@ class _HomePageState extends State<HomePage> {
                           mainAxisSpacing: 18,
                           mainAxisExtent: 251,
                         ),
-                        itemCount: products.length,
+                        itemCount: product.products.length,
                         itemBuilder: (context, index) {
-                          final product = products[index];
+                          var currentproduct = product.products[index];
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          DetailProductPage(product: product)));
+                                      builder: (context) => DetailProductPage(
+                                          product: currentproduct)));
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                                       bottom: Radius.circular(20),
                                     ),
                                     child: Image.asset(
-                                      product.imageUrl,
+                                      currentproduct.imageUrl,
                                       height: 187,
                                       width: double.infinity,
                                       fit: BoxFit.cover,
@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 7.8),
                                     child: Text(
-                                      product.title,
+                                      currentproduct.title,
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -214,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          '\$${product.price.toString()}',
+                                          '\$${currentproduct.price.toString()}',
                                           style: const TextStyle(
                                             color: Color(0xFF00623B),
                                             fontSize: 17.35,
@@ -223,16 +223,16 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            setState(() {
-                                              product.favorite = !product.favorite;
-                                            });
+                                            product.changeIsFavorite(
+                                                currentproduct);
                                           },
-                                          child: Icon(
-                                            Icons.favorite,
-                                            color: product.favorite
-                                                ? Colors.red
-                                                : Colors.black,
-                                          ),
+                                          child: Obx(() => Icon(
+                                                Icons.favorite,
+                                                color: currentproduct
+                                                        .favorite.value
+                                                    ? Colors.red
+                                                    : Colors.black,
+                                              )),
                                         )
                                       ],
                                     ),
@@ -254,38 +254,7 @@ class _HomePageState extends State<HomePage> {
             // LIST PRODUCT END
 
             // NAV BOTTOM START
-            Container(
-              height: 70,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Color(0xFF00623B),
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(
-                    Icons.home,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                  Icon(
-                    Icons.payment,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                  Icon(
-                    Icons.favorite_border,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                  Icon(
-                    Icons.notifications_none,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                ],
-              ),
-            )
+            NavbarBottom(),
           ],
         ),
       ),

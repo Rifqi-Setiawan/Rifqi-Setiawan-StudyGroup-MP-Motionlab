@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:motion_week_2/class/class_product.dart';
+import 'package:motion_week_2/controllers/cart_controller.dart';
+import 'package:motion_week_2/models/product_model.dart';
+import 'package:motion_week_2/widgets/custom_button_green.dart';
+import 'package:get/get.dart';
 
 class DetailProductPage extends StatelessWidget {
- final Product product;
-
-  const DetailProductPage({super.key, required this.product});
+  final ProductModel product;
+  var Cart = Get.put(CartController());
+  DetailProductPage({super.key, required this.product});
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Padding(
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,11 +35,11 @@ class DetailProductPage extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                Icon(
-                  Icons.favorite,
-                  color: product.favorite ? Colors.red : Colors.black,
-                  size: 50,
-                ),
+                Obx(() => Icon(
+                      Icons.favorite,
+                      color: product.favorite.value ? Colors.red : Colors.black,
+                      size: 50,
+                    )),
               ],
             ),
           ),
@@ -78,8 +80,7 @@ class DetailProductPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.only(left: 15),
                     margin: const EdgeInsets.only(bottom: 10),
-                    child: Text(
-                        product.description),
+                    child: Text(product.description),
                   ),
                 ],
               ),
@@ -90,27 +91,10 @@ class DetailProductPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () {
-                  },
-                  child: Container(
-                    width: 381,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: const Color(0xff00623B),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Add to cart",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                CustomButtonGreen(onPressed: () {
+                  Cart.addCart(product.imageUrl, product.title, product.price, 1.obs);
+                  Navigator.pushNamed(context, "/cart");
+                }, buttonText: "Add to Cart"),
               ],
             ),
           ),
