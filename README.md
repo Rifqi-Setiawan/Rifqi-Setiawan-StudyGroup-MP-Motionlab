@@ -1,16 +1,5 @@
-# motion_shop_get_c_l_i
+# WEEK 5 - Get CLI
 
-A new Flutter project.
+## Get CLI
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Get CLI adalah command-line yang disediakan oleh GetX untuk mempercepat pengembangan aplikasi flutter. Dengan Get CLI, kita dapat generate folder dan file controller, views, dan routse dengan sekali command.
