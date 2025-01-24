@@ -14,7 +14,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // fetchCategory();
+    fetchCategory();
     fetchProduct();
   }
 
@@ -30,6 +30,7 @@ class HomeController extends GetxController {
 
   void fetchProduct() async{
     product.value = await ProductService().getProducts() ?? DataProductModel();
+    filteredProduct.value = product.value.products ?? [];
     isLoading.value = false;
   }
 
@@ -37,7 +38,15 @@ class HomeController extends GetxController {
     listCategory.value = await ProductService().getCategories() ?? <String>[];
   }
 
-  void changeCategory(String category) {
+  void changeCategory(String category) async {
     selectedCategory = category;
+    update();
+    if(category == "All") {
+      product.value = await ProductService().getProducts() ?? DataProductModel();
+    } else {
+      product.value = await ProductService().getProductsByCategory(category) ?? DataProductModel();
+    }
+    filteredProduct.value = product.value.products ?? [];
+    update();
   }
 }

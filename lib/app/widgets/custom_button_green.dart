@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomButtonGreen extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String buttonText;
+  final VoidCallback? onPressed;
+  final String? buttonText;
   const CustomButtonGreen(
-      {super.key, required this.onPressed, required this.buttonText});
+      {super.key, this.onPressed, this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CustomButtonGreen extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            buttonText,
+            buttonText ?? "",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
