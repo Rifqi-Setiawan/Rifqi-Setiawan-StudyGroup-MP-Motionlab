@@ -100,7 +100,7 @@ class DetailProductView extends GetView<DetailProductController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomButtonGreen(buttonText: controller.detailProduct.title),
+                          CustomButtonGreen(buttonText: "Add to Cart"),
                         ],
                       ),
                     ),

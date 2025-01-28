@@ -9,7 +9,8 @@ class DetailProductController extends GetxController {
   var isLoading = true.obs;
   @override
   void onInit() {
-    var id = Get.arguments;
+    final args = Get.arguments as Map<String, int>;
+    final id = args['id'] ?? 0; 
     fetchProductByID(id);
     super.onInit();
   }

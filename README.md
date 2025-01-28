@@ -1,5 +1,7 @@
-# WEEK 5 - Get CLI
+# WEEK 6 - API
 
-## Get CLI
+## API
+Cara agar berkomunikasi antara client dan server
 
-Get CLI adalah command-line yang disediakan oleh GetX untuk mempercepat pengembangan aplikasi flutter. Dengan Get CLI, kita dapat generate folder dan file controller, views, dan routse dengan sekali command.
+## Future
+Future adalah sebuah objek di Dart yang mempresentasikan operasi asinkron, yaitu tugas yang hasilnya mungkin tersedia di masa depan (belum tersedia langsung). Future digunakan untuk menangani tugas yang memerlukan waktu untuk selesai
