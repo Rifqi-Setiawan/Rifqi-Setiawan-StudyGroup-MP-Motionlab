@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 class CustomTextFieldWidget extends StatelessWidget {
   String? hintText;
   Icon? icon;
-  ValueChanged<String>? onChanged;
-  CustomTextFieldWidget({super.key, this.hintText, this.icon, this.onChanged});
+  TextEditingController? controller;
+  bool? isPassword;
+  CustomTextFieldWidget({super.key, this.hintText, this.icon, this.controller, this.isPassword});
 
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: onChanged,
+      obscureText: isPassword ?? false,
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(

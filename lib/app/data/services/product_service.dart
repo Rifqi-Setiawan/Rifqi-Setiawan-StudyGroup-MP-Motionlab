@@ -1,6 +1,7 @@
-import 'package:get/get.dart';
+import 'package:dio/dio.dart';
 import 'package:motion_shop_get_c_l_i/app/data/models/data_product_model.dart';
 import 'package:motion_shop_get_c_l_i/app/data/models/product_model.dart';
+import 'package:motion_shop_get_c_l_i/app/data/models/user_model.dart';
 import 'package:motion_shop_get_c_l_i/app/data/shared/constanta.dart';
 
 class ProductService {
@@ -63,6 +64,35 @@ class ProductService {
 
     }catch(e) {
       return throw Exception(e);
+    }
+  }
+
+  Future<UserModel> loginService({
+    required String username,
+    required String password,
+  }) async {
+    try {
+      final response = await dio.post(
+        '$url/auth/login',
+        data: {
+          'username': username,
+          'password': password,
+        },
+      );
+
+      if (response.statusCode == 200 && response.data != null) {
+        return UserModel.fromJson(response.data);
+      } else {
+        throw Exception('Login failed. Status code: ${response.statusCode}');
+      }
+    } on DioException catch (e) {
+      if (e.response != null) {
+        throw Exception(e.response?.data['message']);
+      } else {
+        throw Exception('Network error: ${e.message}');
+      }
+    } catch (e) {
+      throw Exception('Error during login: $e');
     }
   } 
 }

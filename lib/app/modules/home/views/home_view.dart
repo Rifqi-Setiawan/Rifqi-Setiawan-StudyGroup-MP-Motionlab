@@ -91,48 +91,57 @@ class HomeView extends GetView<HomeController> {
                                 // CATEGORY START
                                 SizedBox(
                                   height: 45,
-                                  child: ListView.separated(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    clipBehavior: Clip.none,
-                                    itemCount: controller.listCategory.length,
-                                    separatorBuilder: (context, index) =>
-                                        const SizedBox(width: 12),
-                                    itemBuilder: (context, index) {
-                                      var currentFilter =
-                                          controller.listCategory[index];
-                                      return GestureDetector(
-                                        onTap: () {
-                                          controller
-                                              .changeCategory(currentFilter);
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20, vertical: 10),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            color: currentFilter ==
-                                                    controller.selectedCategory
-                                                ? const Color(0xFF3A5A40)
-                                                : const Color(0xFF868A91)
-                                                    .withOpacity(0.2),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              currentFilter,
-                                              style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 20,
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis
+                                        .horizontal,
+                                    child: Row(
+                                      children: List.generate(
+                                        controller.listCategory.length,
+                                        (index) {
+                                          var currentFilter =
+                                              controller.listCategory[index];
+                                          return GestureDetector(
+                                            onTap: () {
+                                              controller.changeCategory(
+                                                  currentFilter);
+                                            },
+                                            child: Container(
+                                              margin: const EdgeInsets
+                                                  .symmetric(
+                                                  horizontal:
+                                                      6), 
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                                color: currentFilter ==
+                                                        controller
+                                                            .selectedCategory
+                                                    ? const Color(0xFF3A5A40)
+                                                    : const Color(0xFF868A91)
+                                                        .withOpacity(0.2),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  currentFilter,
+                                                  style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                      );
-                                    },
+                                          );
+                                        },
+                                      ),
+                                    ),
                                   ),
                                 ),
+
                                 // CATEGORY END
                                 const SizedBox(height: 28),
 
