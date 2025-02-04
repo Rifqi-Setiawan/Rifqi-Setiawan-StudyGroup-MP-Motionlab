@@ -38,7 +38,7 @@ class RegisterView extends GetView<RegisterController> {
             height: 54,
           ),
 
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
               hintText: "Full Name",
@@ -50,7 +50,7 @@ class RegisterView extends GetView<RegisterController> {
             height: 20,
           ),
           
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
               hintText: "Email",
@@ -62,7 +62,7 @@ class RegisterView extends GetView<RegisterController> {
             height: 20,
           ),
           
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
               hintText: "Password",
@@ -74,7 +74,7 @@ class RegisterView extends GetView<RegisterController> {
             height: 20,
           ),
           
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
               hintText: "Confirm Password",

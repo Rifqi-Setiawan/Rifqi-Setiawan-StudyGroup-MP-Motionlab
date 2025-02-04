@@ -37,21 +37,23 @@ class LoginView extends GetView<LoginController> {
           const SizedBox(
             height: 18,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
               hintText: "Email",
               icon: Icon(Icons.email),
+              onChanged: (value) => controller.username.value = value,
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 23),
             child: CustomTextFieldWidget(
               hintText: "Password",
               icon: Icon(Icons.password),
+              onChanged: (value) => controller.password.value = value,
             ),
           ),
           const SizedBox(
