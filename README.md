@@ -1,7 +1,9 @@
-# WEEK 6 - API
+# WEEK 7 - Local Storage
 
-## API
-Cara agar berkomunikasi antara client dan server
+## Local Storage
+Local Storage adalah cara untuk menyimpan data secara permanen di perangkat pengguna. Local Storage berguna untuk aplikasi yang tidak memerlukan koneksi internet permanen, atau melakukan semua operasi pada perangkat itu sendiri.
 
-## Future
-Future adalah sebuah objek di Dart yang mempresentasikan operasi asinkron, yaitu tugas yang hasilnya mungkin tersedia di masa depan (belum tersedia langsung). Future digunakan untuk menangani tugas yang memerlukan waktu untuk selesai
+## Contoh Local Storage
+- Hive
+- SQLite
+- SharedPreferences
