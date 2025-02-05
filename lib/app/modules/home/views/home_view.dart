@@ -252,10 +252,29 @@ class HomeView extends GetView<HomeController> {
                                                               FontWeight.bold,
                                                         ),
                                                       ),
-                                                      Icon(
-                                                        Icons.favorite,
-                                                        color: Colors.red,
-                                                      )
+                                                     Obx(() {
+                                                        return IconButton(
+                                                          onPressed: () {
+                                                            controller
+                                                                .toggleFavorite(
+                                                                    currentproduct.id!);
+                                                          },
+                                                          icon: Icon(
+                                                            controller
+                                                                    .isFavorite(
+                                                                        currentproduct!
+                                                                            .id)
+                                                                ? Icons.favorite
+                                                                : Icons
+                                                                    .favorite_border,
+                                                            color: controller
+                                                                    .isFavorite(
+                                                                        currentproduct.id)
+                                                                ? Colors.red
+                                                                : Colors.grey,
+                                                          ),
+                                                        );
+                                                      }),
                                                     ],
                                                   ),
                                                 )

@@ -6,6 +6,7 @@ class ProductModel {
     String? category;
     double? price;
     String? thumbnail;
+    bool isFavorite;
 
     ProductModel({
         this.id,
@@ -14,6 +15,7 @@ class ProductModel {
         this.category,
         this.price,
         this.thumbnail,
+        this.isFavorite = false,
     });
 
     factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(

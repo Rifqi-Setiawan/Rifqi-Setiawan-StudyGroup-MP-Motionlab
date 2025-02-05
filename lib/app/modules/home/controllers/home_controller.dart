@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:motion_shop_get_c_l_i/app/data/models/data_product_model.dart';
 import 'package:motion_shop_get_c_l_i/app/data/models/product_model.dart';
 import 'package:motion_shop_get_c_l_i/app/data/services/product_service.dart';
+import 'package:motion_shop_get_c_l_i/app/modules/favorite/controllers/favorite_controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -48,5 +49,17 @@ class HomeController extends GetxController {
     }
     filteredProduct.value = product.value.products ?? [];
     update();
+  }
+   final FavoriteController favoriteController = Get.put(FavoriteController());
+
+  // Periksa apakah produk adalah favorit
+  bool isFavorite(int? productId) {
+    if (productId == null) return false;
+    return favoriteController.favoriteProducts.contains(productId);
+  }
+
+  // Toggle status favorit produk
+  void toggleFavorite(int productId) {
+    favoriteController.toggleFavorite(productId);
   }
 }

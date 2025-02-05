@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NavbarBottom extends StatelessWidget {
   const NavbarBottom({super.key});
@@ -14,15 +15,25 @@ class NavbarBottom extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Icon(
-                    Icons.home,
-                    color: Colors.white,
-                    size: 40,
+                  GestureDetector(
+                    onTap: (){
+                      Get.toNamed("/home");
+                    },
+                    child: Icon(
+                      Icons.home,
+                      color: Colors.white,
+                      size: 40,
+                    ),
                   ),
-                  Icon(
-                    Icons.favorite_border,
-                    color: Colors.white,
-                    size: 40,
+                  GestureDetector(
+                    onTap: (){
+                      Get.toNamed("/favorite");
+                    },
+                    child: Icon(
+                      Icons.favorite_border,
+                      color: Colors.white,
+                      size: 40,
+                    ),
                   ),
                   Icon(
                     Icons.notifications_none,
